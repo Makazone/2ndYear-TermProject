@@ -1,0 +1,30 @@
+%%% Размер полей %%%
+\geometry{a4paper,top=2cm,bottom=2cm,left=1.5cm,right=1.5cm}
+
+%%% Кодировки и шрифты %%%
+%\renewcommand{\rmdefault}{ftm} % Включаем Times New Roman
+
+%%% Выравнивание и переносы %%%
+\sloppy					% Избавляемся от переполнений
+\clubpenalty=10000		% Запрещаем разрыв страницы после первой строки абзаца
+\widowpenalty=10000		% Запрещаем разрыв страницы после последней строки абзаца
+
+%%% Библиография %%%
+\makeatletter
+\bibliographystyle{utf8gost705u}	% Оформляем библиографию в соответствии с ГОСТ 7.0.5
+\renewcommand{\@biblabel}[1]{#1.}	% Заменяем библиографию с квадратных скобок на точку:
+\makeatother
+
+%%% Цвета гиперссылок %%%
+\definecolor{linkcolor}{rgb}{0.9,0,0}
+\definecolor{citecolor}{rgb}{0,0.6,0}
+\definecolor{urlcolor}{rgb}{0,0,1}
+\hypersetup{
+    colorlinks, linkcolor={linkcolor},
+    citecolor={citecolor}, urlcolor={urlcolor}
+}
+
+%%% Оглавление %%%
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % делает линии из точек для parts
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % делает линии из точек для chapters
+\usepackage{hyperref} % Кликабельные ссылки в оглавлении
