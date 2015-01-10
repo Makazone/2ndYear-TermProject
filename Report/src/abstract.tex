@@ -10,8 +10,8 @@
 
 \vspace{5mm}
 
-При помощи языка JavaScript и библиотеки D3.js было создано веб-приложение — модель прохождения сигнала внутри живой клетки. Основные элементы модели — гены и микроРНК. Внутри клетки они активизируют или подавляют друг друга, причем, воздействуя на кого-то, элемент подавляет себя. Нам известно, за что отвечают некоторые гены и, воздействуя на них определенным образом можно активизировать или подавить какие-то функции организма. Например, известно, какой ген отвечает за иммунитет. К сожалению, у некоторых новорожденных этот ген «спит», и при рождении у них полностью отсутствует иммунитет. Воздействуя на этот ген определенным образом, можно «включить» иммунитет таким младенцам.\par
-Созданная модель позволяет имитировать процессы, протекающие в клетке при определенных воздействиях. Достаточно построить граф взаимодействий элементов, загрузить его в эмулятор, и мы увидим, что произойдет — какие элементы активизируются, а какие, наоборот, будут подавлены. Это позволяет очень дешево и в короткие сроки проверять различные препараты и методики лечения. Предположительно, эта модель может помочь в онкологии и иммунологии.\par
+Наличие контекстной информации является одним из важнейших факторов для построения личных рекомендаций. Однако, классические алгоритмы коллаборативной фильтрации, основанные на матричных разложениях, таких как SVD разложение, используют только информацию о пользователях и предметах и не предоставляют явного методов включения дополнительных факторов. В данной работе будет показан один из методов встраивания контекстной информации в алгоритм, использующий SVD разложение. Для тестирования рассматриваемого метода будет использоваться открытый банк данных \href{http://grouplens.org/datasets/movielens}{MovieLens}. База данных содержит пользователей портала MovieLens, каждый из которых оценил не менее 20 фильмов, а так же информацию о каждом фильме.  
+
 \end{abstract}
 
 \clearpage
@@ -28,8 +28,6 @@ Scientific adviser. dignatov@hse.ru\par
 
 \vspace{5mm}
 
-With the help of the JavaScript language and libraries D3.js was created a web application - a model of the signal within the living cell. The main elements of the model - genes and miRNAs. Inside the cell, they activate or inhibit each other, and, acting on someone element suppresses itself. We know that for some genes are responsible and acting on them in a certain way, you can activate or suppress any function of the body. For example, it is known which gene is responsible for immunity. Unfortunately, some newborns this gene "asleep" and at birth have completely absent immunity. By acting on this gene in a certain way, you can "turn on" the immune system in such infants.\par
-Created a model to simulate the processes occurring in the cell under certain influences. Sufficient to construct a graph of interacting elements, and we'll see what happens - what elements are activated, and which, on the contrary, will be suppressed. This allows very cheap and in a short time to test various drugs and treatment methods. Presumably, this model can help in oncology and immunology.\par
-(By Google Translate)\par
+Context has always been an important factor in personalized Recommender systems. However, standard collaborative filtering algorithms based on matrix factorization rely mainly on user and subject information and don't provide any methods for incapsulating extra data. This work demonstrates such a method based on SVD decomposition. To test results an open data base taken from \href{http://grouplens.org/datasets/movielens}{MovieLens} is used. The database provides information about users and movies.   
 
 \end{abstract}
