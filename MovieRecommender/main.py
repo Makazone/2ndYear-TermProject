@@ -44,16 +44,28 @@ for entry in open(dataPath):
 
 dataSize = [len(usersUsed.keys()), int(dataInfo[1][0])] # [number of users, number of items]
 
-# # casvdModel = casvd.ContextAwareSVD(userRatings, usersList, itemList, numberOfFeatures=15)
-# # casvdModel.findDecomposition()
-# # print "Context-aware RMSE = %f" % casvdModel.computeRMSE()
-# # print "Context-aware MAE = %f" % casvdModel.computeMAE()
+usersList = []
+for uid in usersUsed.keys():
+    usersList.append(userDB[uid])
+
+itemsList = []
+for iid in itemDB.keys():
+    itemsList.append(itemDB[iid])
+
+casvdModel = casvd.ContextAwareSVD(15, usersList, itemsList, userRatings)
+casvdModel.findDecomposition()
 
 svdModel = svd.SVD(15, dataSize[0], dataSize[1], userRatings)
 svdModel.findDecomposition()
 
-# # # print np.dot(svdModel.userFeatureMatrix, svdModel.itemFeatureMatrix.T)
+print 'Evaluating Context Aware SVD'
+casvdEvaluator = rseval.RecSysEvaluator(casvdModel.userFeatureMatrix, casvdModel.itemFeatureMatrix, userRatings)
+casvdEvaluator.reconstructionMAE()
+casvdEvaluator.newRatingsMAE("data/u1.test")
 
-evaluator = rseval.RecSysEvaluator(svdModel.userFeatureMatrix, svdModel.itemFeatureMatrix, userRatings)
-evaluator.reconstructionMAE()
-evaluator.newRatingsMAE("data/u1.test")
+print '\n'
+
+print 'Evaluating simple SVD'
+simpleSVDEvaluator = rseval.RecSysEvaluator(svdModel.userFeatureMatrix, svdModel.itemFeatureMatrix, userRatings)
+simpleSVDEvaluator.reconstructionMAE()
+simpleSVDEvaluator.newRatingsMAE("data/u1.test")

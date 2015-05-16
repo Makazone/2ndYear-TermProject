@@ -16,3 +16,14 @@ class Film():
 
     def __str__(self):
         return "{id: %d, title: %s}" % (self.id, self.title)
+
+    def getContextDict(self, contextIndexOffset):
+        context = {}
+
+        for i in xrange(0, 19):
+            if self.genre[i] == 5:
+                context[(contextIndexOffset+i, self.id)] = 5
+            else:
+                context[(contextIndexOffset+i, self.id)] = 0
+
+        return context

@@ -19,3 +19,30 @@ class User():
 
     def __str__(self):
         return "{id: %d, age: %d, %c}" % (self.id, self.exactAge, self.gender)
+
+    def getContextDict(self, contextIndexOffset):
+        context = {}
+
+        if self.ageGroup == 0:
+            context[(self.id, contextIndexOffset+0)] = 5
+            context[(self.id, contextIndexOffset+1)] = 0
+            context[(self.id, contextIndexOffset+2)] = 0
+        elif self.ageGroup == 1:
+            context[(self.id, contextIndexOffset+0)] = 0
+            context[(self.id, contextIndexOffset+1)] = 5
+            context[(self.id, contextIndexOffset+2)] = 0
+        else:
+            context[(self.id, contextIndexOffset+0)] = 0
+            context[(self.id, contextIndexOffset+1)] = 0
+            context[(self.id, contextIndexOffset+2)] = 5
+
+        contextIndexOffset += 3
+
+        if self.gender == 'M':
+            context[(self.id, contextIndexOffset+0)] = 5
+            context[(self.id, contextIndexOffset+1)] = 0
+        else:
+            context[(self.id, contextIndexOffset+0)] = 0
+            context[(self.id, contextIndexOffset+1)] = 5
+
+        return context

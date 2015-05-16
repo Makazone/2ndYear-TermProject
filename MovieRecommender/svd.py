@@ -14,7 +14,7 @@ class SVD():
         self.usersCount = numberOfUsers
         self.itemsCount = numberOfItems
 
-        self.userRatings = ratings
+        self.userRatings = dict(ratings)
         self.numberOfFeatures = numberOfFeatures
 
         # self.userFeatureMatrix = np.random.rand(self.usersCount, self.numberOfFeatures)
