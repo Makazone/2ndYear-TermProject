@@ -48,20 +48,3 @@ class SVD():
                     "Update rules"
                     self.userFeatureMatrix[userID, f] += learningRate * (2 * error * self.itemFeatureMatrix[itemID, f] - genRate * self.userFeatureMatrix[userID, f])
                     self.itemFeatureMatrix[itemID, f] += learningRate * (2 * error * self.userFeatureMatrix[userID, f] - genRate * self.itemFeatureMatrix[itemID, f])
-
-
-    def computeRMSE(self, userFeatures, itemFeatures):
-        error = 0
-        for (userID, itemID) in self.userRatings.keys():
-            predicted = np.dot(userFeatures[userID, :], itemFeatures[itemID, :].T)
-            error += math.pow(self.userRatings[(userID, itemID)] - predicted, 2)
-        error /= len(self.userRatings.keys())
-        return math.sqrt(error)
-
-    def computeMAE(self, userFeatures, itemFeatures):
-        error = 0
-        for (userID, itemID) in self.userRatings.keys():
-            predicted = np.dot(userFeatures[userID, :], itemFeatures[itemID, :].T)
-            error += abs(self.userRatings[(userID, itemID)] - predicted)
-        error /= len(self.userRatings.keys())
-        return error

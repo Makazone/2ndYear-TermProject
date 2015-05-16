@@ -1,12 +1,8 @@
-import numpy as np
-import scipy as sc
-from sklearn.decomposition import NMF
-from time import time
-import pymf
 import svd
 import User
 import Film
 import casvd
+import RecSysEvaluator as rseval
 
 userDB = {}
 itemDB = {}
@@ -33,7 +29,7 @@ for line in open('data/u.item'):
 print 'Reading ratings file'
 
 dataInfo = [line.split() for line in open("data/u.info")]
-dataPath = "data/u.data"
+dataPath = "data/u1.base"
 
 userRatings = {}
 usersUsed = {}
@@ -52,11 +48,12 @@ dataSize = [len(usersUsed.keys()), int(dataInfo[1][0])] # [number of users, numb
 # # casvdModel.findDecomposition()
 # # print "Context-aware RMSE = %f" % casvdModel.computeRMSE()
 # # print "Context-aware MAE = %f" % casvdModel.computeMAE()
-#
-# svdModel = svd.SVD(dataPath, 15, len(usersList), 1682)
-# svdModel.findDecomposition()
-#
-# # # print np.dot(svdModel.userFeatureMatrix, svdModel.itemFeatureMatrix.T)
-# print "Simple RMSE = %f" % svdModel.computeRMSE(svdModel.userFeatureMatrix, svdModel.itemFeatureMatrix)
-# print "Simple MAE = %f" % svdModel.computeMAE(svdModel.userFeatureMatrix, svdModel.itemFeatureMatrix)
 
+svdModel = svd.SVD(15, dataSize[0], dataSize[1], userRatings)
+svdModel.findDecomposition()
+
+# # # print np.dot(svdModel.userFeatureMatrix, svdModel.itemFeatureMatrix.T)
+
+evaluator = rseval.RecSysEvaluator(svdModel.userFeatureMatrix, svdModel.itemFeatureMatrix, userRatings)
+evaluator.reconstructionMAE()
+evaluator.newRatingsMAE("data/u1.test")
