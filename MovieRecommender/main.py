@@ -62,6 +62,7 @@ print 'Evaluating Context Aware SVD'
 casvdEvaluator = rseval.RecSysEvaluator(casvdModel.userFeatureMatrix, casvdModel.itemFeatureMatrix, userRatings)
 casvdEvaluator.reconstructionMAE()
 casvdEvaluator.newRatingsMAE("data/u1.test")
+casvdEvaluator.newRatingsRMSE("data/u1.test")
 
 print '\n'
 
@@ -69,3 +70,4 @@ print 'Evaluating simple SVD'
 simpleSVDEvaluator = rseval.RecSysEvaluator(svdModel.userFeatureMatrix, svdModel.itemFeatureMatrix, userRatings)
 simpleSVDEvaluator.reconstructionMAE()
 simpleSVDEvaluator.newRatingsMAE("data/u1.test")
+simpleSVDEvaluator.newRatingsRMSE("data/u1.test")
