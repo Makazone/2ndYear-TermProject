@@ -25,6 +25,7 @@ class SVD():
     def findDecomposition(self):
         self.__learnFeatureWithSGD()
 
+    # Funk SVD
     def __learnFeatureWithSGD(self):
         learningRate = 0.005
         genRate = 0.02
