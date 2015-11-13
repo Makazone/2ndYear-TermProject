@@ -4,8 +4,7 @@
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
-*.log
-*.lot
+*.log *.lot
 *.fls
 *.out
 *.toc
@@ -230,3 +229,4 @@ crashlytics-build.properties
 # Mac OS
 .DS_STORE
 
+Presentation/
